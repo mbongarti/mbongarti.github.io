@@ -1,8 +1,8 @@
 ---
-title: "Publications"
+title: "Research"
 layout: single
 sitemap: true
-permalink: /publications/
+permalink: /research/
 author_profile: true
 toc: true
 toc_label: "Category"
