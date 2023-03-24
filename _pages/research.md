@@ -33,6 +33,6 @@ and specific related problems include
 
 **The SMGT equation from the boundary: regularity and stabilization** <br> _with Irena Lasiecka and Roberto Triggiani_ <br> Applicable Analysis, 2022, 101(5): 1735-1773 [[doi](https://doi.org/10.1080/00036811.2021.1999420)] |
 
-**Reducing Memory Requirements of Quantum Optimal Control** <br> _with Sri H. K. Narayanan, Thomas Propson, Jan {\"u}ckelheim and Paul Hovland_ <br> Computational Science -- ICCS 2022, 2022: 129-142 [[doi](https://doi.org/10.1007/978-3-031-08760-8_11)] |
+**Reducing Memory Requirements of Quantum Optimal Control** <br> _with Sri H. K. Narayanan, Thomas Propson, Jan Hückelheim and Paul Hovland_ <br> Computational Science -- ICCS 2022, 2022: 129-142 [[doi](https://doi.org/10.1007/978-3-031-08760-8_11)] |
 
 **Boundary stabilization of the linear MGT equation with partially absorbing boundary data and degenerate viscoelasticity** <br> _with Irena Lasiecka and Jose H. Rodrigues_ <br> Discrete and Continuous Dynamical Systems - S, 2022, 15(6): 1355-1376 [[doi](https://doi.org/10.3934/dcdss.2022020)] |
