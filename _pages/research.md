@@ -1,5 +1,5 @@
 ---
-title: "Finite Element Research"
+title: "Research"
 layout: single
 sitemap: true
 permalink: /research/
