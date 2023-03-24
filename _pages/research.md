@@ -4,10 +4,8 @@ layout: single
 sitemap: true
 permalink: /research/
 author_profile: true
-toc: true
-toc_label: "Topic"
-toc_icon: "gear"
 ---
+
 I work on the analysis of (mainly nonlinear hyperbolic) partial differential equations (PDEs) and associated control and optimization problems. 
 
 </p>
