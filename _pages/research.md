@@ -21,3 +21,10 @@ and specific related problems include
 - PDE constrained optimal boundary control problems with control/state constraints
 - Energy Markets and related generalized Nash equilibrium problems
 - Model predictive control
+
+## Publications
+### Preprints
+
+### Peer-reviewed scientific articles
+
+**Adaptive sampling strategies for risk-averse stochastic optimization with constraints** <br> _with Florian Besier, Simon Urbainczyk, and Barbara Wohlmuth_ <br> IMA Journal of Numerical Analysis (to appear) [[preprint](https://arxiv.org/abs/2012.03844)] |
