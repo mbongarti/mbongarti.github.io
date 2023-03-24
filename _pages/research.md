@@ -27,4 +27,6 @@ and specific related problems include
 
 ### Peer-reviewed scientific articles
 
-**Boundary feedback stabilization of a critical nonlinear JMGT equation with Neumann-undissipated part of the boundary** <br> _with Irena Lasiecka_ <br> Discrete and Continuous Dynamical Systems - S, 2022, 15(8): 1957-1985 [[link](https://www.aimsciences.org/article/doi/10.3934/dcdss.2022107)] |
+**Boundary feedback stabilization of a critical nonlinear JMGT equation with Neumann-undissipated part of the boundary** <br> _with Irena Lasiecka_ <br> Discrete and Continuous Dynamical Systems - S, 2022, 15(8): 1957-1985 [[doi](https://www.aimsciences.org/article/doi/10.3934/dcdss.2022107)] |
+
+**The SMGT equation from the boundary: regularity and stabilization** <br> _with Irena Lasiecka and Roberto Triggiani_ <br> Applicable Analysis, 2022, 101(5): 1735-1773 [[doi](https://doi.org/10.1080/00036811.2021.1999420)] |
