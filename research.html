@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Marcelo Bongarti — Postdoctoral Researcher in Applied Mathematics">
+<title>Marcelo Bongarti</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2e4a;
+    --navy-light: #2a4269;
+    --accent: #4a7fb5;
+    --accent-hover: #3a6a9a;
+    --text: #2c2c2c;
+    --text-muted: #555;
+    --text-light: #777;
+    --border: #dde3ea;
+    --bg: #ffffff;
+    --bg-sidebar: #f6f8fb;
+    --bg-tag: #eaf1f8;
+    --tag-color: #2a4a70;
+    --radius: 6px;
+    --font: 'Georgia', 'Times New Roman', serif;
+    --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: #f0f3f7;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Top nav ── */
+  nav {
+    background: var(--navy);
+    padding: 0 2rem;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+  }
+  .nav-brand {
+    color: #fff; font-weight: 600; font-size: 1rem;
+    text-decoration: none; letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 0; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 0.875rem; padding: 0 1rem; height: 52px;
+    display: flex; align-items: center;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-links a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  /* ── Page wrapper ── */
+  .page {
+    max-width: 1000px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 0;
+    background: var(--bg);
+    min-height: calc(100vh - 52px);
+    box-shadow: 0 0 40px rgba(0,0,0,0.08);
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    padding: 2.5rem 1.5rem;
+    position: sticky; top: 52px;
+    align-self: start;
+    height: calc(100vh - 52px);
+    overflow-y: auto;
+  }
+
+  .profile-photo {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    object-fit: cover; object-position: center top;
+    display: block; margin: 0 auto 1.25rem;
+    border: 3px solid var(--border);
+  }
+
+  .sidebar-name {
+    font-family: var(--font);
+    font-size: 1.2rem; font-weight: bold;
+    text-align: center; color: var(--navy);
+    margin-bottom: 0.35rem; line-height: 1.3;
+  }
+  .sidebar-role {
+    font-size: 0.8rem; color: var(--text-muted);
+    text-align: center; line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 1.25rem 0;
+  }
+
+  .sidebar-links { list-style: none; }
+  .sidebar-links li { margin-bottom: 0.5rem; }
+  .sidebar-links a {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem; color: var(--text-muted);
+    text-decoration: none; transition: color 0.15s;
+  }
+  .sidebar-links a:hover { color: var(--accent); }
+  .sidebar-links .icon {
+    width: 16px; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  .sidebar-location {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem; color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Main content ── */
+  main { padding: 3rem 2.5rem; }
+
+  section { margin-bottom: 3rem; }
+  section:last-child { margin-bottom: 0; }
+
+  h1.section-title {
+    font-family: var(--font);
+    font-size: 1.75rem; color: var(--navy);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  h2.section-title {
+    font-family: var(--font);
+    font-size: 1.4rem; color: var(--navy);
+    margin-bottom: 1.25rem; padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  p { margin-bottom: 0.9rem; font-size: 0.95rem; color: var(--text); line-height: 1.75; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--navy); }
+
+  /* Tags / pills */
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+  .tag {
+    background: var(--bg-tag); color: var(--tag-color);
+    font-size: 0.78rem; padding: 3px 10px; border-radius: 20px;
+    border: 1px solid #c5d9ee;
+  }
+
+  /* Research areas */
+  .research-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 1rem;
+  }
+  .research-card {
+    background: var(--bg-sidebar); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1rem 1.1rem;
+    border-left: 3px solid var(--accent);
+  }
+  .research-card h3 {
+    font-size: 0.9rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .research-card p { font-size: 0.83rem; color: var(--text-muted); margin: 0; }
+
+  /* Projects */
+  .project-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+  .project-card {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1rem 1.25rem; background: #fff;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .project-icon {
+    width: 36px; height: 36px; border-radius: var(--radius);
+    background: var(--bg-tag); display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; font-size: 1.1rem;
+  }
+  .project-card h3 { font-size: 0.92rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
+  .project-card p { font-size: 0.83rem; color: var(--text-muted); margin: 0; }
+  .project-links { margin-top: 0.4rem; display: flex; gap: 0.75rem; }
+  .project-links a {
+    font-size: 0.78rem; color: var(--accent);
+    text-decoration: none; border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .project-links a:hover { border-color: var(--accent); }
+
+  /* Publications */
+  .pub-list { list-style: none; }
+  .pub-list li {
+    padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+  }
+  .pub-list li:last-child { border-bottom: none; }
+  .pub-title { font-size: 0.93rem; font-weight: 600; color: var(--navy); line-height: 1.45; }
+  .pub-authors { font-size: 0.82rem; color: var(--text-muted); margin: 0.15rem 0; }
+  .pub-venue {
+    font-size: 0.82rem; color: var(--text-light);
+    font-style: italic;
+  }
+  .pub-venue a { color: var(--accent); text-decoration: none; }
+  .pub-venue a:hover { text-decoration: underline; }
+  .pub-badge {
+    display: inline-block; font-size: 0.7rem; font-style: normal;
+    background: #e8f4e8; color: #2a6b2a;
+    padding: 2px 8px; border-radius: 20px;
+    margin-left: 0.4rem; vertical-align: middle;
+  }
+
+  /* CV section */
+  .cv-block {
+    background: var(--bg-sidebar); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .cv-block p { margin: 0; font-size: 0.88rem; color: var(--text-muted); }
+  .btn {
+    display: inline-block; padding: 0.55rem 1.25rem;
+    background: var(--navy); color: #fff;
+    text-decoration: none; border-radius: var(--radius);
+    font-size: 0.85rem; font-weight: 500; white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: var(--navy-light); }
+  .btn-outline {
+    background: transparent; color: var(--navy);
+    border: 1px solid var(--navy);
+  }
+  .btn-outline:hover { background: var(--navy); color: #fff; }
+
+  /* Footer */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.55);
+    text-align: center; font-size: 0.78rem; padding: 1.25rem;
+  }
+  footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .page { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    main { padding: 2rem 1.25rem; }
+    .research-grid { grid-template-columns: 1fr; }
+    .nav-links a { padding: 0 0.6rem; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Marcelo Bongarti</a>
+    <div class="nav-links">
+      <a href="research.html">Research</a>
+      <a href="projects.html">Projects</a>
+      <a href="publications.html">Publications</a>
+      <a href="cv.html">CV</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <img
+      class="profile-photo"
+      src="photo_black.jpg"
+      alt="Marcelo Bongarti"
+    />
+    <div class="sidebar-name">Marcelo Bongarti</div>
+    <div class="sidebar-role">Postdoctoral Researcher<br>Weierstraß Institute</div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-location">
+      <span class="icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+      Berlin, Germany
+    </div>
+
+    <ul class="sidebar-links">
+      <li>
+        <a href="mailto:bongarti@wias-berlin.de">
+          <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          bongarti@wias-berlin.de
+        </a>
+      </li>
+      <li>
+        <a href="https://scholar.google.com/citations?user=7io2ih4AAAAJ&hl=en" target="_blank" rel="noopener">
+          <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 1 7 7"/><path d="M8.5 2.5 12 6l3.5-3.5"/></svg></span>
+          Google Scholar
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/mbongarti" target="_blank" rel="noopener">
+          <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S9 17.44 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span>
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a href="https://linkedin.com/in/marcelo-bongarti-664151134" target="_blank" rel="noopener">
+          <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+          LinkedIn
+        </a>
+      </li>
+    </ul>
+
+    <hr class="sidebar-divider">
+
+    <div class="tags">
+      <span class="tag">Analysis of PDEs</span>
+      <span class="tag">Optimization</span>
+      <span class="tag">Finance</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Data Science</span>
+      <span class="tag">Game Theory</span>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+ <main class="page-content">
+    <h1 class="page-title">Publications</h1>
+
+    <h2 class="year-heading">2026</h2>
+    
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti, C. Parkinson, and W. Wang. 
+        <span style="font-weight: bold; color: var(--primary-color);">Optimal control of a reaction-diffusion epidemic model with non-compliance.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">European Journal of Applied Mathematics</span>, 37(2), 313--338, 2026.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Publisher Link]</a>
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[PDF]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=2026+Teaser" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <h2 class="year-heading">2025</h2>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti and M. Hintermüller. 
+        <span style="font-weight: bold; color: var(--primary-color);">Structure versus regularity of set-valued maps in convex generalized Nash equilibrium problems in Banach spaces.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">arXiv preprint arXiv:2512.12831</span>, 2025.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="https://arxiv.org/abs/2512.12831" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[arXiv]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Nash+Equil+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        L. M. de Souza, R. C. Guido, R. C. Contreras, M. S. Viana, and M. A. dos S. Bongarti. 
+        <span style="font-weight: bold; color: var(--primary-color);">Improving Voice Spoofing Detection Through Extensive Analysis of Multicepstral Feature Reduction.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Sensors</span>, 25(15), 4821, 2025.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Publisher Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Voice+Detection+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        Z. Amer, A. Avdzhieva, M. Bongarti, P. Dvurechensky, P. Farrell, U. Gotzes, F. M. Hante, A. Karsai, S. Kater, M. Liero, et al. 
+        <span style="font-weight: bold; color: var(--primary-color);">Modeling hydrogen embrittlement for pricing degradation in gas pipelines.</span> 2025.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Preprint/PDF]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Hydrogen+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <h2 class="year-heading">2024</h2>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti and M. Hintermüller. 
+        <span style="font-weight: bold; color: var(--primary-color);">Optimal boundary control of the isothermal semilinear Euler equation for gas dynamics on a network.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Applied Mathematics & Optimization</span>, 89(2), 1--48, 2024.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[DOI Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Euler+Net+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. S. Viana, R. C. Contreras, P. C. Pessoa, M. A. dos S. Bongarti, H. Zamani, R. C. Guido, and O. MorandinJunior. 
+        <span style="font-weight: bold; color: var(--primary-color);">Massive Conscious Neighborhood-Based Crow Search Algorithm for the Pseudo-Coloring Problem.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">International Conference on Swarm Intelligence</span>, 182--196, 2024.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Conference Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Crow+Alg+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        R. C. Contreras, A. F. Campanharo, M. S. Viana, M. A. dos S. Bongarti, and R. C. Guido. 
+        <span style="font-weight: bold; color: var(--primary-color);">Dimensionality Reduction in Multicepstral Features for Voice Spoofing Detection: Case Studies with Singular Value Decomposition, Genetic Algorithm, and Auto-Encoder.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">International Conference on Artificial Intelligence and Soft Computing</span>, 227--244, 2024.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[SVD Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=SVD+Voice+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <h2 class="year-heading">2022</h2>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti, I. Lasiecka, and J. H. Rodrigues. 
+        <span style="font-weight: bold; color: var(--primary-color);">Boundary stabilization of the linear MGT equation with partially absorbing boundary data and degenerate viscoelasticity.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Discrete and Continuous Dynamical Systems - S</span>, 15(6), 22, 2022.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Journal Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=MGT+Equ+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti, I. Lasiecka, and R. Triggiani. 
+        <span style="font-weight: bold; color: var(--primary-color);">The SMGT equation from the boundary: regularity and stabilization.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Applicable Analysis</span>, 101(5), 1735--1773, 2022.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Publisher Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=SMGT+Reg+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        S. H. K. Narayanan, T. Propson, M. Bongarti, J. Hückelheim, and P. Hovland. 
+        <span style="font-weight: bold; color: var(--primary-color);">Reducing memory requirements of quantum optimal control.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">International Conference on Computational Science</span>, 129--142, 2022.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Conference Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Quantum+Ctrl+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti and I. Lasiecka. 
+        <span style="font-weight: bold; color: var(--primary-color);">Boundary feedback stabilization of a critical nonlinear JMGT equation with Neumann-undissipated part of the boundary.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Discrete and Continuous Dynamical Systems - S</span>, 15(8), 28, 2022.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Journal Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=JMGT+Neumann+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti, L. D. Galvan, L. Hatcher, M. R. Lindstrom, C. Parkinson, C. Wang, and A. L. Bertozzi. 
+        <span style="font-weight: bold; color: var(--primary-color);">Alternative SIAR models for infectious diseases and applications in the study of non-compliance.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Mathematical Models and Methods in Applied Sciences</span>, 32(10), 1987--2015, 2022.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Publisher Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=SIAR+Model+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <h2 class="year-heading">2021</h2>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti and I. Lasiecka. 
+        <span style="font-weight: bold; color: var(--primary-color);">Boundary stabilization of the linear MGT equation with feedback Neumann control.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Deterministic and Stochastic Optimal Control and Inverse Problems</span>, 7, 150--168, 2021.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Book Chapter Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Neumann+Ctrl+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti and G. Lozada-Cruz. 
+        <span style="font-weight: bold; color: var(--primary-color);">Alguns Teoremas do Tipo Valor Médio: de Lagrange a Malesevic.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Revista Matemática Universitária</span>, 1, 17, 2021.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Journal Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Valor+Medio+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti, I. Lasiecka, and J. H. Rodrigues. 
+        <span style="font-weight: bold; color: var(--primary-color);">Optimal boundary feedback control of high intensity focused ultrasound processes.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">2021 60th IEEE Conference on Decision and Control (CDC)</span>, 3318--3323, 2021.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[IEEE CDC Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=HIFU+Ctrl+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <h2 class="year-heading">2020</h2>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti, S. Charoenphon, and I. Lasiecka. 
+        <span style="font-weight: bold; color: var(--primary-color);">Vanishing relaxation time dynamics of the Jordan Moore-Gibson-Thompson equation arising in nonlinear acoustics.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Journal of Evolution Equations</span>, 2020.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Journal Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=JMGT+Dynamics+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <h2 class="year-heading">2019</h2>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem;">
+      <div style="flex: 1;">
+        M. Bongarti, S. Charoenphon, and I. Lasiecka. 
+        <span style="font-weight: bold; color: var(--primary-color);">Singular Thermal Relaxation Limit for the Moore-Gibson-Thompson equation Arising in Propagation of Acoustic Waves.</span> 
+        <span style="font-style: italic; color: var(--muted-text);">Conference on Semigroups of Operators: Theory and Applications</span>, 147--182, 2019.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Springer Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=MGT+Acoustic+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+    <h2 class="year-heading">2016</h2>
+
+    <div style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem;">
+      <div style="flex: 1;">
+        M. A. dos S. Bongarti. 
+        <span style="font-weight: bold; color: var(--primary-color);">Domínios de potências fracionárias de operadores matriciais segundo Lasiecka-Triggiani.</span> 
+        Universidade Estadual Paulista (UNESP), 2016.
+        <div style="margin-top: 0.35rem; font-size: 0.85rem;">
+          <a href="#" style="color: var(--link-color); text-decoration: none; margin-right: 0.75rem; font-weight: 500;">[Thesis Link]</a>
+        </div>
+      </div>
+      <div style="width: 140px; flex-shrink: 0;">
+        <img src="https://via.placeholder.com/140x100?text=Thesis+GIF" alt="Teaser Preview" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid var(--border-color);">
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="wrapper" style="padding-top: 0; padding-bottom: 0;">
+  <div style="grid-column: 1 / -1;">
+    <footer>
+      &copy; 2026 Marcelo Bongarti. Powered by clean HTML/CSS.
+    </footer>
+  </div>
+</div>
+
+</body>
+</html>
