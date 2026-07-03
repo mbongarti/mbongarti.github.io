@@ -1,11 +1,15 @@
-<main>
-  <section id="cv">
-    <h1 class="section-title">CV</h1>
-    <div class="cv-block">
-      <div>
-        <p>Download my full curriculum vitae for a complete overview...</p>
-      </div>
-      <a class="btn" href="cv.pdf" download>Download CV (PDF)</a>
+---
+layout: default
+title: CV
+---
+
+<section id="cv">
+  <h1 class="section-title">CV</h1>
+  <div class="cv-block">
+    <div>
+      <p>My full curriculum vitae, embedded below for viewing.</p>
     </div>
-  </section>
-</main>
+    <a class="btn" href="{{ '/cv.pdf' | relative_url }}" download>Download CV (PDF)</a>
+  </div>
+  <embed src="{{ '/cv.pdf' | relative_url }}" type="application/pdf" class="cv-embed" />
+</section>
